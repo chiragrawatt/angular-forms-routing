@@ -1,0 +1,12 @@
+<ul class="sidebar-nav">
+    <li class="sidebar-header">
+        {{navData.header}}
+    </li>
+    <div *ngFor="let data of navData.navLinks">
+        <li class="sidebar-item" routerLinkActive="active">
+            <a class="sidebar-link " [routerLink]="data.path">
+                <i [ngClass]="{'align-middle': true}" [class]="data.icon"> </i> <span class="align-middle">{{data.title}}</span>
+            </a>
+        </li>
+    </div>
+</ul>

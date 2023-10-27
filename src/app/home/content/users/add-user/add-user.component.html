@@ -1,0 +1,27 @@
+<mat-card class="p-4">
+    <div class="d-flex justify-content-center">
+        <h1 class="fs-1">Enter User Details</h1>
+    </div>
+    <mat-card-content>
+        <mat-divider class="mb-3"></mat-divider>
+        <form class="d-flex flex-column" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input type="text" formControlName="name" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input type="email" formControlName="email" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Age</mat-label>
+                <input type="number" formControlName="age" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Phone</mat-label>
+                <input type="tel" formControlName="phone" matInput>
+            </mat-form-field>
+            <button type="submit" mat-raised-button color="primary" [disabled]="userForm.invalid">ADD</button>
+        </form>
+    </mat-card-content>
+</mat-card>

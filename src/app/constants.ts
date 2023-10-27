@@ -1,0 +1,1 @@
+export const USER_DISPLAY_COLUMNS : string[] = ['id', 'name', 'email', 'age', 'phone', 'actions'];

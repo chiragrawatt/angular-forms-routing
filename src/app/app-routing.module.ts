@@ -8,6 +8,9 @@ import { UsersComponent } from './home/content/users/users.component';
 import { AddUserComponent } from './home/content/users/add-user/add-user.component';
 import { ViewUsersComponent } from './home/content/users/view-users/view-users.component';
 import { EditUserComponent } from './home/content/users/edit-user/edit-user.component';
+import { ProductComponent } from './home/content/product/product.component';
+import { AddProductComponent } from './home/content/product/add-product/add-product.component';
+import { ViewProductsComponent } from './home/content/product/view-products/view-products.component';
 
 const routes: Routes = [
   {
@@ -35,6 +38,20 @@ const routes: Routes = [
             component: EditUserComponent
           }
         ]
+      },
+      {
+        path: "product",
+        component: ProductComponent,
+        children: [
+          {
+            path: "add",
+            component: AddProductComponent
+          },
+          {
+            path: "view",
+            component: ViewProductsComponent
+          }
+        ]
       }
     ]
   },
@@ -45,7 +62,12 @@ const routes: Routes = [
   {
     path: "signup",
     component: SignupComponent
-  }
+  },
+  { 
+    path: '', 
+    redirectTo: '/home/dashboard', 
+    pathMatch: 'full' 
+  },
 ];
 
 @NgModule({

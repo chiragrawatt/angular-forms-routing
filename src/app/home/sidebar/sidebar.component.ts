@@ -36,9 +36,24 @@ export class SidebarComponent {
           icon: "bi bi-people"
         },
         {
-          title: "Create",
+          title: "Add",
           path: "user/add",
           icon: "bi bi-person-add"
+        }
+      ]
+    },
+    {
+      header: "Product",
+      navLinks: [
+        {
+          title: "View",
+          path: "product/view",
+          icon: "bi bi-basket"
+        },
+        {
+          title: "Add",
+          path: "product/add",
+          icon: "bi bi-cart-plus"
         }
       ]
     }

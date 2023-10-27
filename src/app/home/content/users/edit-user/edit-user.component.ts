@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -14,14 +14,8 @@ export class EditUserComponent {
   userForm: FormGroup = this.fb.group({});
   userId: number = -1;
 
-  constructor(private fb: FormBuilder, private userService: UserService, private activatedRoute: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
 
-  }
-
-  onSubmit() {
-    let user: User = this.userForm.getRawValue();
-    console.log(user);
-    
   }
 
   ngOnInit(): void {
@@ -33,7 +27,7 @@ export class EditUserComponent {
     })
 
     let user: User | null = this.userService.getUserById(this.userId);
-    console.log(this.userId, user);
+    console.log(user);
 
     this.userForm = this.fb.group({
       name: [user?.name, [
@@ -52,7 +46,13 @@ export class EditUserComponent {
       ]]
     });
   }
-  // Validators.pattern(/^\d{10}$/)
+
+  updateUser() {
+    let user: User = this.userForm.getRawValue();
+    user.id = this.userId;
+    this.userService.updateUser(user);
+    this.router.navigate(['../../view'], {relativeTo: this.activatedRoute})
+  }
 
   phoneNumberValidator() : ValidatorFn {
     return (control: AbstractControl) : ValidationErrors | null => {

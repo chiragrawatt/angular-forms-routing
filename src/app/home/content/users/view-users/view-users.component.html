@@ -1,4 +1,8 @@
-<table mat-table #userTable [dataSource]="users" class="mat-elevation-z8">
+<div *ngIf="users.length==0">
+  <h1 class="align-self-center">Looks like there are no users added yet, <a routerLink="../add">add new</a></h1>
+</div>
+
+<table mat-table #userTable *ngIf="users.length>0" [dataSource]="users" class="mat-elevation-z8">
 
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> ID </th>

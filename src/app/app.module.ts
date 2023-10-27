@@ -20,6 +20,9 @@ import { EditUserComponent } from './home/content/users/edit-user/edit-user.comp
 import { UsersComponent } from './home/content/users/users.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProductComponent } from './home/content/product/product.component';
+import { ViewProductsComponent } from './home/content/product/view-products/view-products.component';
+import { AddProductComponent } from './home/content/product/add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     AddUserComponent,
     ViewUsersComponent,
     EditUserComponent,
-    UsersComponent
+    UsersComponent,
+    ProductComponent,
+    ViewProductsComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

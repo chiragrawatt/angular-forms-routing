@@ -26,31 +26,35 @@ export class UserService {
         maxId = user.id;
       }
     })
-    user.id = maxId+1; 
+    user.id = maxId+1;
     this.users.push(user);
+    console.log(this.users);
     this.saveToLocalStorage();
-    console.log(localStorage.getItem('users'));
   }
 
-  deleteUser(userId: number) {
+  deleteUser(userId: number) : void {
     this.users = this.users.filter(user => {
       return user.id !== userId;
     });
     this.saveToLocalStorage();
   }
 
-  updateUser(user: User) : boolean {
+  updateUser(user: any) {
+    console.log(user);
     let idx = this.users.findIndex(obj => {
-      return obj.id = user.id;
-    });
+      return obj.id === user.id;
+    })
 
-    if(idx===-1) {
-      return false;
+    console.log(idx);
+
+    if(idx==-1) {
+      return;
     }
 
     this.users[idx] = user;
-    console.log(this.users, idx);
-    return true;
+    console.log(this.users);
+    console.log(idx);
+    console.log(this.users);
   }
 
   getAllUsers() : User[] {

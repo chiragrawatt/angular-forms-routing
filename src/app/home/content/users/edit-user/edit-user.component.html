@@ -4,22 +4,26 @@
     </div>
     <mat-card-content>
         <mat-divider class="mb-3"></mat-divider>
-        <form class="d-flex flex-column" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <form class="d-flex flex-column" [formGroup]="userForm" (ngSubmit)="updateUser()">
             <mat-form-field>
                 <mat-label>Name</mat-label>
                 <input type="text" formControlName="name" matInput>
+                <mat-error *ngIf="userForm.get('name')?.invalid">Name cannot be empty</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Email</mat-label>
                 <input type="email" formControlName="email" matInput>
+                <mat-error *ngIf="userForm.get('email')?.invalid">Invalid email</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Age</mat-label>
                 <input type="number" formControlName="age" matInput>
+                <mat-error *ngIf="userForm.get('age')?.invalid">Age must be greater the 12</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Phone</mat-label>
                 <input type="number" formControlName="phone" matInput>
+                <mat-error *ngIf="userForm.get('phone')?.invalid">Phone number must be 10 digits</mat-error>
             </mat-form-field>
             <button type="submit" mat-raised-button color="primary" [disabled]="userForm.invalid">UPDATE</button>
         </form>
